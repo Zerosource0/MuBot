@@ -1,7 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
-import HelloWorld from "../views/HelloWorld.vue";
+import Login from "../views/Login.vue";
 import Main from "../views/Main.vue";
+import Callback from "../views/Callback.vue";
 
 Vue.use(Router);
 
@@ -11,13 +12,23 @@ export default new Router({
       path: "/",
       name: "index",
       redirect: {
-        name: "c-main",
+        name: "c-login",
       }
     },
     {
-      path: "/Main",
+      path: "/login",
+      name: "c-login",
+      component: Login,
+    },
+    {
+      path: "/main",
       name: "c-main",
       component: Main,
+    },
+    {
+      path: "/callback",
+      name: "c-callback",
+      component: Callback,
     },
   ],
 });
