@@ -1,0 +1,14 @@
+C:\code\MuBot\api\MuBotWebApi\MuBotWebApi\bin\Debug\netcoreapp2.1\MuBotWebApi.deps.json
+C:\code\MuBot\api\MuBotWebApi\MuBotWebApi\bin\Debug\netcoreapp2.1\MuBotWebApi.runtimeconfig.json
+C:\code\MuBot\api\MuBotWebApi\MuBotWebApi\bin\Debug\netcoreapp2.1\MuBotWebApi.runtimeconfig.dev.json
+C:\code\MuBot\api\MuBotWebApi\MuBotWebApi\bin\Debug\netcoreapp2.1\MuBotWebApi.dll
+C:\code\MuBot\api\MuBotWebApi\MuBotWebApi\obj\Debug\netcoreapp2.1\MuBotWebApi.csprojAssemblyReference.cache
+C:\code\MuBot\api\MuBotWebApi\MuBotWebApi\obj\Debug\netcoreapp2.1\MuBotWebApi.csproj.CoreCompileInputs.cache
+C:\code\MuBot\api\MuBotWebApi\MuBotWebApi\obj\Debug\netcoreapp2.1\MuBotWebApi.RazorAssemblyInfo.cache
+C:\code\MuBot\api\MuBotWebApi\MuBotWebApi\obj\Debug\netcoreapp2.1\MuBotWebApi.RazorAssemblyInfo.cs
+C:\code\MuBot\api\MuBotWebApi\MuBotWebApi\obj\Debug\netcoreapp2.1\MuBotWebApi.AssemblyInfoInputs.cache
+C:\code\MuBot\api\MuBotWebApi\MuBotWebApi\obj\Debug\netcoreapp2.1\MuBotWebApi.AssemblyInfo.cs
+C:\code\MuBot\api\MuBotWebApi\MuBotWebApi\obj\Debug\netcoreapp2.1\MuBotWebApi.RazorTargetAssemblyInfo.cache
+C:\code\MuBot\api\MuBotWebApi\MuBotWebApi\bin\Debug\netcoreapp2.1\MuBotWebApi.pdb
+C:\code\MuBot\api\MuBotWebApi\MuBotWebApi\obj\Debug\netcoreapp2.1\MuBotWebApi.dll
+C:\code\MuBot\api\MuBotWebApi\MuBotWebApi\obj\Debug\netcoreapp2.1\MuBotWebApi.pdb
