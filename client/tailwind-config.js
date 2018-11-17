@@ -46,15 +46,49 @@ let defaultConfig = require('tailwindcss/defaultConfig')()
 let colors = {
   'transparent': 'transparent',
 
-  'black': '#22292f',
-  'grey-darkest': '#3d4852',
-  'grey-darker': '#606f7b',
-  'grey-dark': '#8795a1',
-  'grey': '#b8c2cc',
-  'grey-light': '#dae1e7',
-  'grey-lighter': '#f1f5f8',
-  'grey-lightest': '#f8fafc',
   'white': '#ffffff',
+  'grey-lightest': '#f8f9f8',
+  'grey-lighter': '#e4e6e5',
+  'grey-light': '#d1d2d1',
+  'grey': '#bebfbe',
+  'grey-dark': '#969796',
+  'grey-darker': '#6f706f',
+  'grey-darkest': '#484948',
+  'black': '#202121',
+  
+  'brand-light': '#d1efd3',
+  'brand': '#1db954',
+  'brand-dark': '#1e592d',
+  
+  'cta-light': '#ebcbee',
+  'cta': '#a21db9',
+  'cta-dark': '#501a59',
+  
+  'info-light': '#d9f5f6',
+  'info': '#3ed6dc',
+  'info-dark': '#2a6568',
+  
+  'warning-light': '#fbf5cd',
+  'warning': '#ddd725',
+  'warning-dark': '#69651e',
+  
+  'success-light': '#d8fad3',
+  'success': '#2fe348',
+  'success-dark': '#266b29',
+  
+  'danger-light': '#ffd9ce',
+  'danger': '#e46546',
+  'danger-dark': '#6d3426',
+
+  // 'black': '#22292f',
+  // 'grey-darkest': '#3d4852',
+  // 'grey-darker': '#606f7b',
+  // 'grey-dark': '#8795a1',
+  // 'grey': '#b8c2cc',
+  // 'grey-light': '#dae1e7',
+  // 'grey-lighter': '#f1f5f8',
+  // 'grey-lightest': '#f8fafc',
+  // 'white': '#ffffff',
 
   'red-darkest': '#3b0d0c',
   'red-darker': '#621b18',

@@ -7,6 +7,7 @@ import Callback from "../views/Callback.vue";
 Vue.use(Router);
 
 export default new Router({
+  mode: "history",
   routes: [
     {
       path: "/",
@@ -16,7 +17,7 @@ export default new Router({
       }
     },
     {
-      path: "/login",
+      path: "/login/",
       name: "c-login",
       component: Login,
     },
@@ -26,7 +27,7 @@ export default new Router({
       component: Main,
     },
     {
-      path: "/callback",
+      path: "/callback/",
       name: "c-callback",
       component: Callback,
     },

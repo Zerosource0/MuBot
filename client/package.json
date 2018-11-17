@@ -8,6 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "json5": "^2.1.0",
     "lodash": "^4.17.11",
     "material-design-icons-iconfont": "^4.0.2",
     "qs": "^6.5.2",
@@ -24,6 +26,7 @@
     "vuex-class": "0.3.0"
   },
   "devDependencies": {
+    "@types/json5": "^0.0.30",
     "@types/lodash": "^4.14.118",
     "@types/node": "^10.12.5",
     "@types/simple-oauth2": "^2.2.0",
@@ -37,6 +40,7 @@
     "sass-loader": "^7.0.1",
     "tailwind": "^2.4.0",
     "tailwindcss": "^0.7.0",
+    "ts-type-guards": "^0.5.0",
     "typescript": "^3.0.0",
     "vue-cli-plugin-tailwind": "^0.3.2",
     "vue-cli-plugin-vuetify": "^0.4.5",
@@ -45,9 +49,8 @@
   },
   "postcss": {
     "plugins": {
-      "tailwindcss": "./tailwind-config.js",
-      "vue-cli-plugin-tailwind/purgecss": {},
       "postcss-import": {},
+      "tailwindcss": "./tailwind-config.js",
       "autoprefixer": {}
     }
   },
