@@ -14,7 +14,7 @@
           <span class="font-light">BOT</span>
         </h1>
         <div
-          v-if="connected"
+          v-if="false"
           class="text-center self-center text-grey-darkest text-xl"
         >..is now connected to Spotify</div>
       </div>
@@ -29,22 +29,9 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { TokenGetter } from "../store/token.store";
-import { IToken } from "@/core/spotify/SpotifyAuthController";
 
 export default class App extends Vue {
-  @TokenGetter
-  accessToken!: IToken;
 
-  connected: boolean = false;
-
-  mounted() {
-    this.isConnected();
-  }
-
-  isConnected(): boolean {
-    return this.accessToken !== null || this.accessToken !== undefined;
-  }
 }
 </script>
 

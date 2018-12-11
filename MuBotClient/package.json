@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --port 1337",
+    "serve": "vue-cli-service serve --https --port 1337",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "vue_ui": "vue ui"
@@ -48,6 +48,7 @@
     "ts-loader": "^5.3.0",
     "ts-type-guards": "^0.5.0",
     "typescript": "^3.0.0",
+    "vee-validate": "^2.1.3",
     "vue-cli-plugin-tailwind": "^0.3.2",
     "vue-cli-plugin-vuetify": "^0.4.5",
     "vue-template-compiler": "^2.5.17",

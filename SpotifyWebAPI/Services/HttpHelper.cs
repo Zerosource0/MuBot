@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace SpotifyWebAPI.Services
 {
@@ -22,7 +20,9 @@ namespace SpotifyWebAPI.Services
         private HttpHelper()
         {
             _client = new HttpClient();
-            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("*"));
+            _client.DefaultRequestHeaders.Add("Accept", "application/json");
+            _client.DefaultRequestHeaders.Add("Content-Type", "application/json, application/x-www-form-urlencoded");
+
         }
 
         public async Task<HttpResponseMessage> Get(string url)
@@ -35,6 +35,20 @@ namespace SpotifyWebAPI.Services
             IncludeBearer(includeBearer, token);
 
             return await Get(url);
+        }
+
+        public async Task<HttpResponseMessage> GetToken(string url, Dictionary<string, string> postData, string clientId, string clientSecret)
+        {
+            HttpContent content = EncodeContent(postData);
+
+            _client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue(
+                    "Basic",
+                    Convert.ToBase64String(
+                        System.Text.Encoding.ASCII.GetBytes(
+                            $"{clientId}:{clientSecret}")));
+
+            return await _client.PostAsync(url, content);
         }
 
         public async Task<HttpResponseMessage> Post(string url, Dictionary<string, string> postData = null, string jsonString = null)
@@ -75,11 +89,12 @@ namespace SpotifyWebAPI.Services
 
         private HttpContent EncodeContent(Dictionary<string, string> postData, string jsonString = null)
         {
-            return !string.IsNullOrWhiteSpace(jsonString)
-                ? (HttpContent) new StringContent(jsonString)
-                : postData != null
-                    ? new FormUrlEncodedContent(postData.ToArray())
-                    : null;
+            if (!string.IsNullOrWhiteSpace(jsonString))
+                return new StringContent(jsonString);
+
+            return postData != null
+                ? new FormUrlEncodedContent(postData.ToArray())
+                : null;
         }
 
         private void IncludeBearer(bool includeBearer, AuthenticationToken token)

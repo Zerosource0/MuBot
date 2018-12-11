@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Login from "../views/Login.vue";
+import SpotifyLogin from "../views/SpotifyLogin.vue";
 import Main from "../views/Main.vue";
 import Callback from "../views/Callback.vue";
 
@@ -22,14 +23,19 @@ export default new Router({
       component: Login,
     },
     {
-      path: "/main",
-      name: "c-main",
-      component: Main,
+      path: "/login/spotify",
+      name: "c-spotify-login",
+      component: SpotifyLogin,
     },
     {
       path: "/callback/",
       name: "c-callback",
       component: Callback,
+    },
+    {
+      path: "/main",
+      name: "c-main",
+      component: Main,
     },
   ],
 });

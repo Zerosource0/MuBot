@@ -1,8 +1,11 @@
-﻿using System.Security.Claims;
+﻿using System;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using Models.DTO;
+using MuBotWebApi.Extensions;
 using MuBotWebApi.Services;
+using Newtonsoft.Json;
 
 namespace MuBotWebApi.Controllers.UserController
 {
@@ -18,14 +21,10 @@ namespace MuBotWebApi.Controllers.UserController
             _userService = userService;
         }
 
-        [HttpGet("test")]
-        [Produces("application/json")]
-        public ActionResult Test()
+        [HttpGet("verify")]
+        public ActionResult VerifyToken()
         {
-            var claimsIdentity = User.Identity as ClaimsIdentity;
-            var userid = claimsIdentity?.FindFirst(ClaimTypes.Name)?.Value;
-            var otherId = User.FindFirst("sub")?.Value;
-            return Ok($"You are authorized! id:{userid}, other:{otherId}");
+            return Ok();
         }
 
         [HttpGet]
@@ -36,24 +35,20 @@ namespace MuBotWebApi.Controllers.UserController
             return Ok("MuBot Backend is running");
         }
 
-
+        [AllowAnonymous]
+        [HttpPost("create")]
+        public ActionResult CreateUser([FromBody]CreateUserRequest request)
+        {
+            _userService.CreateUser(request);
+            return Ok();
+        }
 
         [AllowAnonymous]
         [HttpPost("authenticate")]
-        public ActionResult<User> Authenticate([FromBody]LoginParams loginParams)
+        public ActionResult<string> Authenticate([FromBody]LoginRequest request)
         {
-            var user = _userService.Authenticate(loginParams.Username, loginParams.Password);
-
-            if (user == null)
-                return BadRequest(new { message = "Username or password is incorrect" });
-
-            return Ok(user);
+            User user = _userService.Authenticate(request.Username, request.Password);
+            return Ok(user.AuthToken);
         }
-    }
-
-    public class LoginParams
-    {
-        public string Username { get; set; }
-        public string Password { get; set; }
     }
 }

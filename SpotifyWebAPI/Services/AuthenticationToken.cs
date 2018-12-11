@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace SpotifyWebAPI.Services
 {
@@ -11,17 +12,7 @@ namespace SpotifyWebAPI.Services
         /// 
         /// refreshes the token automatically if it has expired
         /// </summary>
-        public string AccessToken
-        {
-            get
-            {
-                if (HasExpired)
-                    Refresh();
-
-                return _accessToken;
-            }
-            set => _accessToken = value;
-        }
+        public string AccessToken { get; set; }
 
         /// <summary>
         /// How the access token may be used: always "Bearer". 
@@ -48,9 +39,9 @@ namespace SpotifyWebAPI.Services
         /// <summary>
         /// Updates this token if it has expired
         /// </summary>
-        public async void Refresh()
+        public async Task Refresh()
         {
-            var token = await AuthenticationService.GetAccessToken(this.RefreshToken);
+            var token = await AuthenticationService.GetAccessToken(RefreshToken);
             _accessToken = token._accessToken;
             ExpiresOn = token.ExpiresOn;
             RefreshToken = token.RefreshToken;

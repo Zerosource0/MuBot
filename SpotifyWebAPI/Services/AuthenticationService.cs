@@ -22,7 +22,7 @@ namespace SpotifyWebAPI.Services
                 {"client_id", ClientId},
                 {"client_secret", ClientSecret}
             };
-            return await HttpHelper.Instance.Post("https://accounts.spotify.com/api/token", postData).Result.Deserialize<AuthenticationToken>();
+            return await HttpHelper.Instance.GetToken("https://accounts.spotify.com/api/token", postData, ClientId, ClientSecret).Result.Deserialize<AuthenticationToken>();
         }
     }
 }

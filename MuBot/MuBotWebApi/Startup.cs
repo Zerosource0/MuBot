@@ -7,6 +7,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+
+using MuBotWebApi.Controllers.SpotifyControllers;
+using MuBotWebApi.Database;
 using MuBotWebApi.Helpers;
 using MuBotWebApi.Services;
 
@@ -25,8 +28,12 @@ namespace MuBotWebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(options => options.Filters.Add(typeof(UpdateTokenFilter)))
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
             services.AddCors();
+
+            services.AddEntityFrameworkSqlite().AddDbContext<DatabaseContext>();
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
@@ -61,24 +68,21 @@ namespace MuBotWebApi
             loggerFactory.AddDebug();
             loggerFactory.AddFile("Logs/MuBotLog-{Date}.txt");
 
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
-            //else
-            //{
-            //    app.UseHsts();
-            //}
-
             app.UseCors(x => x
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials());
 
+            using (var client = new DatabaseContext())
+            {
+                client.Database.EnsureCreated();
+            }
+
             app.UseAuthentication();
 
             app.UseHttpsRedirection();
+            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
             app.UseMvc();
         }
     }
